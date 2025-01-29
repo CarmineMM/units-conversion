@@ -1,18 +1,23 @@
 {
     "name": "carminemm/units-conversion",
     "description": "Convert digital units and large numbers at a glance",
+    "version": "1.0.0",
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "CarmineMM\\UnitsConversion\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Carmine Maggio",
             "email": "carminemaggiom@gmail.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "CarmineMM\\UnitsConversion\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

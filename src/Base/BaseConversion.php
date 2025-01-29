@@ -1,6 +1,6 @@
 <?php
 
-namespace CarmineMM\Base;
+namespace CarmineMM\UnitsConversion\Base;
 
 /**
  * Base conversion (compatible with other types of mathematical conversions)
@@ -12,22 +12,33 @@ namespace CarmineMM\Base;
 class BaseConversion
 {
     /**
-     * Valor establecido en el valor mas bajo
+     * Value established in the lowest conversion value,
+     * This must be in the minimum representation,
+     * Because it does not accept decimals.
+     * 
+     * @var float
      */
     protected float $originalValue = 0;
 
     /**
-     * Valor actual en en el valor mas bajo
+     * Current value at the lowest value,
+     * Similar the 'originalValue'.
+     * ($this->originalValue)
+     * 
+     * @var float
      */
     protected float $currentValue = 0;
 
     /**
-     * Lista de elementos
+     * List of conversion elements.
+     * 
+     * @var array
      */
     protected array $lists = [];
 
     /**
-     * Primera clave de la lista
+     *First key on the list,
+     * It is the element of lower denomination.
      *
      * @var string
      */
@@ -51,11 +62,11 @@ class BaseConversion
     }
 
     /**
-     * Descubre la unidad de medida de un numero o de una cadena
+     * Discover the unit of measure of a number or a string.
      *
      * @param string|integer $number
      * @param string $unit
-     * @return array
+     * @return array [number, unit]
      */
     protected function discoverUnit(string|int|float $number, string $unit = ''): array
     {
@@ -67,19 +78,17 @@ class BaseConversion
             return [$number, $this->getKeyUnit(strtolower($unit))];
         }
 
-
         if (is_string($number) && $unit === '') {
             [$number, $unit] = explode(' ', $number);
 
             return [floatval($number), $this->getKeyUnit($unit)];
         }
 
-        return [0, $this->firstKey];
+        return [$number, $this->firstKey];
     }
 
     /**
-     * Obtiene el key de la unidad de medida,
-     * devolverá un string vació en caso de no existir.
+     * Get the Key of the unit of measure.
      *
      * @param string $unit
      * @return string
@@ -102,7 +111,7 @@ class BaseConversion
     }
 
     /**
-     * Convertir el valor a un otro tipo de unidad
+     * Convert the value to another type of unit
      *
      * @param string $unit
      * @return float
@@ -124,6 +133,9 @@ class BaseConversion
         }
 
         if ($value === 0) {
+            // If you see this error, it means that you have entered a unit
+            // That is not defined in the list, which can be
+            // A writing error or a foul in the bookstore.
             throw new \Exception('Unit not found', 500);
         }
 
@@ -131,7 +143,7 @@ class BaseConversion
     }
 
     /**
-     * Unidades disponibles para la conversión
+     * Units available for conversion
      *
      * @return array
      */
@@ -141,8 +153,9 @@ class BaseConversion
     }
 
     /**
-     * Convierte a una unidad especifica, pero debe ser una de las listada.
-     * Si no es una de las listadas, el método puede dar error.
+     * Convert a specific unit, but it must be one of the listing.
+     * If it is not one of the lists, the method can give error,
+     * Like the final result.
      *
      * @return integer
      */
@@ -181,7 +194,7 @@ class BaseConversion
     }
 
     /**
-     * Origin value en el valor mas bajo
+     * Origin Value at the lowest value
      *
      * @return integer
      */
@@ -191,8 +204,8 @@ class BaseConversion
     }
 
     /**
-     * Muestra el valor en una unidad especifica,
-     * en un string.
+     * Shows the value in a specific unit,
+     * In a string, eg: (20 kB, 20 MB, 20 GB, etc).
      *
      * @param string $unit
      * @return string
@@ -209,13 +222,13 @@ class BaseConversion
     }
 
     /**
-     * Agrega un valor a la unidad actual
+     * Add a value to the current unit.
      *
      * @param string|integer $number
      * @param string $unit
-     * @return UnitsConversion
+     * @return BaseConversion
      */
-    public function add(string|int $number, string $unit = ''): UnitsConversion
+    public function add(string|int $number, string $unit = ''): BaseConversion
     {
         [$number, $unit] = $this->discoverUnit($number, $unit);
 
@@ -225,13 +238,13 @@ class BaseConversion
     }
 
     /**
-     * Resta un valor a la unidad actual
+     * A value remains to the current unit
      *
      * @param string|integer $number
      * @param string $unit
-     * @return UnitsConversion
+     * @return BaseConversion
      */
-    public function less(string|int $number, string $unit = ''): UnitsConversion
+    public function less(string|int $number, string $unit = ''): BaseConversion
     {
         [$number, $unit] = $this->discoverUnit($number, $unit);
 
@@ -242,7 +255,7 @@ class BaseConversion
 
 
     /**
-     * Compara si el valor actual es menor que el valor pasado
+     * Compare if the current value is less than the past value
      *
      * @param string|integer $number
      * @param string $unit
@@ -256,7 +269,7 @@ class BaseConversion
     }
 
     /**
-     * Compara si el valor actual es menor que el valor pasado
+     * Compare if the current value is less than the past value
      *
      * @param string|integer $number
      * @param string $unit
@@ -270,7 +283,7 @@ class BaseConversion
     }
 
     /**
-     * Compara si el valor actual es igual o menor al valor pasado
+     * Compare if the current value is equal to or less than the past value
      *
      * @param string|integer $number
      * @param string $unit
@@ -284,7 +297,7 @@ class BaseConversion
     }
 
     /**
-     * Compara si el valor actual es igual o mayor al valor pasado
+     * Compare whether the current value is equal to or greater than the past value
      *
      * @param string|integer $number
      * @param string $unit
@@ -298,7 +311,7 @@ class BaseConversion
     }
 
     /**
-     * Compara si el valor actual es igual o mayor al valor pasado
+     * Compare whether the current value is equal to or greater than the past value.
      *
      * @param string|integer $number
      * @param string $unit

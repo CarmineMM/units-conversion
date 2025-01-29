@@ -1,8 +1,8 @@
 <?php
 
-namespace CarmineMM\Conversion;
+namespace CarmineMM\UnitsConversion\Conversion;
 
-use CarmineMM\Base\BaseConversion;
+use CarmineMM\UnitsConversion\Base\BaseConversion;
 
 /**
  * Digital Units Conversion
