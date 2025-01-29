@@ -14,7 +14,7 @@ use CarmineMM\UnitsConversion\Base\BaseConversion;
 class DigitalUnitsConversion extends BaseConversion
 {
     /**
-     * Unidades conocidas
+     * Known units
      */
     protected array $lists = [
         'bit' => [
@@ -60,41 +60,4 @@ class DigitalUnitsConversion extends BaseConversion
             'known'  => ['pb', 'petabyte', 'petabytes'],
         ],
     ];
-
-    /**
-     * Original a una conversion nueva
-     *
-     * @return DigitalUnitsConversion
-     */
-    public function originTo(): DigitalUnitsConversion
-    {
-        return new static($this->originalValue, 'bit');
-    }
-
-    /**
-     * Muestra el valor en string, convertido de forma inteligente,
-     * en otras palabras siempre mostrar un numero de fácil lectura
-     *
-     * @return string
-     */
-    public function show(): string
-    {
-        return match (true) {
-            $this->currentValue > $this->lists['PB']['value'] => $this->display('PB'),
-            $this->currentValue > $this->lists['TB']['value'] => $this->display('TB'),
-            $this->currentValue > $this->lists['GB']['value'] => $this->display('GB'),
-            $this->currentValue > $this->lists['MB']['value'] => $this->display('MB'),
-            $this->currentValue > $this->lists['KB']['value'] => $this->display('KB'),
-            $this->currentValue > $this->lists['byte']['value'] => $this->display('byte'),
-            default => $this->display('bit'),
-        };
-    }
-
-    /**
-     * Conversion inteligente a valores según la cantidad de bits
-     */
-    public function smartConversion(): string
-    {
-        return $this->show();
-    }
 }

@@ -325,4 +325,38 @@ class BaseConversion
 
         return $this->currentValue >= $is && $this->currentValue <= $is;
     }
+
+    /**
+     * Shows the value in string, converted intelligently,
+     * In other words always show an easy reading number.
+     */
+    public function show(int $decimals = 2): string
+    {
+        foreach (array_reverse($this->lists, true) as $key => $unit) {
+            if ($this->originalValue > $unit['value']) {
+                return $this->display($key, $decimals);
+            }
+        }
+
+        return $this->display($this->firstKey, $decimals);
+    }
+
+    /**
+     * Intelligent conversion to values ​​according to the amount of bits.
+     */
+    public function smartConversion(): string
+    {
+        return $this->show();
+    }
+
+    /**
+     * Create new instance, with the original amount,
+     * and the unit of measure in bits.
+     *
+     * @return BaseConversion
+     */
+    public function originTo(): BaseConversion
+    {
+        return new static($this->originalValue, $this->firstKey);
+    }
 }
