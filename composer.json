@@ -1,0 +1,18 @@
+{
+    "name": "carminemm/units-conversion",
+    "description": "Convert digital units and large numbers at a glance",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CarmineMM\\UnitsConversion\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Carmine Maggio",
+            "email": "carminemaggiom@gmail.com"
+        }
+    ],
+    "require": {}
+}
