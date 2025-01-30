@@ -76,7 +76,8 @@ The bookstore tries to discover since what unit you want to convert or the desti
 
 ```php
 // Fast conversion without instance
-DigitalUnitsConversion::convert(number: 12323, unit: 'KB', unitTo: 'bytes');
+//It only admits exact units to conversion, listed in 'getAvailableUnits()'
+DigitalUnitsConversion::convert(number: 12323, unit: 'KB', unitTo: 'byte');
 
 $units->to('GB'); // Turn Gigabyte
 $units->to('gb'); // Turn Gigabyte
