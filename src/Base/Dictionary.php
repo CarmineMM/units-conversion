@@ -99,6 +99,60 @@ class Dictionary
                     'long' => ['Century', 'Centuries'],
                 ],
             ],
+            'WeightUnitsConversion' => [
+                'mg' => [
+                    'short' => ['mg', 'mg'],
+                    'long' => ['Milligram', 'Milligrams'],
+                ],
+                'cg' => [
+                    'short' => ['cg', 'cg'],
+                    'long' => ['Centigram', 'Centigrams'],
+                ],
+                'dg' => [
+                    'short' => ['dg', 'dg'],
+                    'long' => ['Decigram', 'Decigrams'],
+                ],
+                'g' => [
+                    'short' => ['g', 'g'],
+                    'long' => ['Gram', 'Grams'],
+                ],
+                'dag' => [
+                    'short' => ['dag', 'dag'],
+                    'long' => ['Decagram', 'Decagrams'],
+                ],
+                'hg' => [
+                    'short' => ['hg', 'hg'],
+                    'long' => ['Hectogram', 'Hectograms'],
+                ],
+                'kg' => [
+                    'short' => ['kg', 'kg'],
+                    'long' => ['Kilogram', 'Kilograms'],
+                ],
+                'oz' => [
+                    'short' => ['oz', 'oz'],
+                    'long' => ['Ounce', 'Ounces'],
+                ],
+                'lb' => [
+                    'short' => ['lb', 'lb'],
+                    'long' => ['Pound', 'Pounds'],
+                ],
+                'stone' => [
+                    'short' => ['st', 'st'],
+                    'long' => ['Stone', 'Stones'],
+                ],
+                'short_ton' => [
+                    'short' => ['sht', 'sht'],
+                    'long' => ['Short Ton', 'Short Tons'],
+                ],
+                'ton' => [
+                    'short' => ['t', 't'],
+                    'long' => ['Ton', 'Tons'],
+                ],
+                'long_ton' => [
+                    'short' => ['lot', 'lot'],
+                    'long' => ['Long Ton', 'Long Tons'],
+                ],
+            ],
         ];
 
         $es = [
@@ -143,6 +197,60 @@ class Dictionary
                 'century' => [
                     'short' => ['SL', 'SLS'],
                     'long' => ['Siglo', 'Siglos'],
+                ],
+            ],
+            'WeightUnitsConversion' => [
+                'mg' => [
+                    'short' => ['mg', 'mg'],
+                    'long' => ['Miligramo', 'Miligramos'],
+                ],
+                'cg' => [
+                    'short' => ['cg', 'cg'],
+                    'long' => ['Centigramo', 'Centigramos'],
+                ],
+                'dg' => [
+                    'short' => ['dg', 'dg'],
+                    'long' => ['Decigramo', 'Decigramos'],
+                ],
+                'g' => [
+                    'short' => ['g', 'g'],
+                    'long' => ['Gramo', 'Gramos'],
+                ],
+                'dag' => [
+                    'short' => ['dag', 'dag'],
+                    'long' => ['Decagramo', 'Decagramos'],
+                ],
+                'hg' => [
+                    'short' => ['hg', 'hg'],
+                    'long' => ['Hectogramo', 'Hectogramos'],
+                ],
+                'kg' => [
+                    'short' => ['kg', 'kg'],
+                    'long' => ['Kilogramo', 'Kilogramos'],
+                ],
+                'oz' => [
+                    'short' => ['oz', 'oz'],
+                    'long' => ['Onza', 'Onzas'],
+                ],
+                'lb' => [
+                    'short' => ['lb', 'lb'],
+                    'long' => ['Libra', 'Libras'],
+                ],
+                'stone' => [
+                    'short' => ['st', 'st'],
+                    'long' => ['Piedra', 'Piedras'],
+                ],
+                'short_ton' => [
+                    'short' => ['sht', 'sht'],
+                    'long' => ['Tonelada Corta', 'Toneladas Cortas'],
+                ],
+                'ton' => [
+                    'short' => ['t', 't'],
+                    'long' => ['Tonelada', 'Toneladas'],
+                ],
+                'long_ton' => [
+                    'short' => ['lot', 'lot'],
+                    'long' => ['Tonelada Larga', 'Toneladas Largas'],
                 ],
             ],
         ];
