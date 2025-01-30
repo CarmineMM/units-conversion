@@ -2,6 +2,13 @@
 
 Use conversion of digital units such as GB or MB, or time conversions like years or months to weeks.
 
+## Requirements
+
+-   `PHP >= 8.1`
+-   MIT License. **_Feel free to use this project_**. **_Leave a star :star: or support the project!_**
+
+[![paypal](https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/paypalme/carminemaggio)
+
 ## Installation
 
 ```bash
