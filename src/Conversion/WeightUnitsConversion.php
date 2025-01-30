@@ -5,7 +5,7 @@ namespace CarmineMM\UnitsConversion\Conversion;
 use CarmineMM\UnitsConversion\Base\BaseConversion;
 
 /**
- * Time conversion
+ * Weight conversion
  *
  * @author Carmine Maggio <carminemaggiom@gmail.com>
  * @package UnitsConversion

@@ -20,9 +20,17 @@ composer require carminemm/units-conversion
 There are multiple classes that you can use to make multiple conversions, the available ones are shown.
 
 ```php
+// Conversion of digital units, MB, KB, GB, TB, etc ...
 CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion::class;
+
+// Time conversions days, months, weeks, etc ...
 CarmineMM\UnitsConversion\Conversion\TimeConversion::class;
+
+// Weight conversions, ounces, pounds, kilograms, tons, etc ...
 CarmineMM\UnitsConversion\Conversion\WeightUnitsConversion::class;
+
+// Conversion de temperatura, Celsius, Fahrenheit, kelvin, Rankine
+CarmineMM\UnitsConversion\Conversion\TemperatureUnitsConversion::class;
 ```
 
 All these classes inherit the same configurations and methods shown below:
