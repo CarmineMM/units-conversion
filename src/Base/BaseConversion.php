@@ -62,6 +62,16 @@ class BaseConversion
     }
 
     /**
+     * Current value
+     *
+     * @return float
+     */
+    public function getCurrent(): float
+    {
+        return $this->currentValue;
+    }
+
+    /**
      * Discover the unit of measure of a number or a string.
      *
      * @param string|integer $number
@@ -311,19 +321,19 @@ class BaseConversion
     }
 
     /**
-     * Compare whether the current value is equal to or greater than the past value.
+     * Compare equal values.
      *
      * @param string|integer $number
      * @param string $unit
      * @return boolean
      */
-    public function isBetween(string|int $number, string $unit = ''): bool
+    public function same(string|int $number, string $unit = ''): bool
     {
         [$number, $unit] = $this->discoverUnit($number, $unit);
 
         $is = static::convert($number, $unit, $this->firstKey);
 
-        return $this->currentValue >= $is && $this->currentValue <= $is;
+        return $this->currentValue === $is;
     }
 
     /**
@@ -353,9 +363,9 @@ class BaseConversion
      * Create new instance, with the original amount,
      * and the unit of measure in bits.
      *
-     * @return BaseConversion
+     * @return static
      */
-    public function originTo(): BaseConversion
+    public function originTo(): static
     {
         return new static($this->originalValue, $this->firstKey);
     }
