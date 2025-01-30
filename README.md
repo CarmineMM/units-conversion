@@ -15,6 +15,18 @@ Use conversion of digital units such as GB or MB, or time conversions like years
 composer require carminemm/units-conversion
 ```
 
+## Classes available in the bookstore
+
+There are multiple classes that you can use to make multiple conversions, the available ones are shown.
+
+```php
+CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion::class;
+CarmineMM\UnitsConversion\Conversion\TimeConversion::class;
+CarmineMM\UnitsConversion\Conversion\WeightUnitsConversion::class;
+```
+
+All these classes inherit the same configurations and methods shown below:
+
 ## Use
 
 ### Units conversion
