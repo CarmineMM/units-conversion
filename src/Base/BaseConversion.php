@@ -283,7 +283,12 @@ class BaseConversion
             throw new \Exception('Unit not found', 500);
         }
 
-        return round($this->to($unitKey), $decimals, PHP_ROUND_HALF_UP) . ' ' . $this->lists[$unitKey]['symbol'];
+        return round($this->to($unitKey), $decimals, PHP_ROUND_HALF_UP) . ' ' . Dictionary::getInstance()->getKey(
+            key: $this->lists[$unitKey]['symbol'],
+            symbolMode: $this->symbolMode,
+            plural: $unit !== 1,
+            default: $this->lists[$unitKey]['symbol']
+        );
     }
 
     /**

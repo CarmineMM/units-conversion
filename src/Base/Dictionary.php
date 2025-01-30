@@ -28,30 +28,34 @@ class Dictionary
     {
         $en = [
             'DigitalUnitsConversion' => [
-                'bit' => [
+                'bits' => [
                     'short' => ['Bit', 'Bits'],
                     'long' => ['Bit', 'Bits'],
                 ],
-                'byte' => [
+                'bytes' => [
                     'short' => ['Byte', 'Bytes'],
                     'long' => ['Byte', 'Bytes'],
                 ],
-                'kilobyte' => [
-                    'short' => ['Kilobyte', 'Kilobytes'],
+                'KB' => [
+                    'short' => ['KB', 'KB'],
                     'long' => ['Kilobyte', 'Kilobytes'],
                 ],
-                'megabyte' => [
-                    'short' => ['Megabyte', 'Megabytes'],
+                'MB' => [
+                    'short' => ['MB', 'MB'],
                     'long' => ['Megabyte', 'Megabytes'],
                 ],
-                'gigabyte' => [
-                    'short' => ['Gigabyte', 'Gigabytes'],
+                'GB' => [
+                    'short' => ['GB', 'GB'],
                     'long' => ['Gigabyte', 'Gigabytes'],
                 ],
-                'terabyte' => [
-                    'short' => ['Terabyte', 'Terabytes'],
+                'TB' => [
+                    'short' => ['TB', 'TB'],
                     'long' => ['Terabyte', 'Terabytes'],
-                ]
+                ],
+                'PB' => [
+                    'short' => ['PB', 'PB'],
+                    'long' => ['Petabyte', 'Petabytes'],
+                ],
             ],
         ];
 
@@ -120,9 +124,9 @@ class Dictionary
      *
      * @return array
      */
-    public function getKey(): array
+    public function getKey(string $key, string $symbolMode, bool $plural = false, string $default): string
     {
-        return [];
+        return $this->symbolInstance[$key][$symbolMode][$plural ? 1 : 0] ?? $default;
     }
 
     /**
