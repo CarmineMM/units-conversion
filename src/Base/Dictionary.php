@@ -57,10 +57,94 @@ class Dictionary
                     'long' => ['Petabyte', 'Petabytes'],
                 ],
             ],
+            'TimeConversion' => [
+                'ms' => [
+                    'short' => ['ms', 'ms'],
+                    'long' => ['Millisecond', 'Milliseconds'],
+                ],
+                's' => [
+                    'short' => ['s', 's'],
+                    'long' => ['Second', 'Seconds'],
+                ],
+                'min' => [
+                    'short' => ['min', 'min'],
+                    'long' => ['Minute', 'Minutes'],
+                ],
+                'h' => [
+                    'short' => ['h', 'h'],
+                    'long' => ['Hour', 'Hours'],
+                ],
+                'd' => [
+                    'short' => ['d', 'd'],
+                    'long' => ['Day', 'Days'],
+                ],
+                'w' => [
+                    'short' => ['W', 'W'],
+                    'long' => ['Week', 'Weeks'],
+                ],
+                'm' => [
+                    'short' => ['M', 'M'],
+                    'long' => ['Month', 'Months'],
+                ],
+                'y' => [
+                    'short' => ['Y', 'Y'],
+                    'long' => ['Year', 'Years'],
+                ],
+                'decade' => [
+                    'short' => ['dec', 'decades'],
+                    'long' => ['Decade', 'Decades'],
+                ],
+                'century' => [
+                    'short' => ['century', 'centuries'],
+                    'long' => ['Century', 'Centuries'],
+                ],
+            ],
         ];
 
         $es = [
             'DigitalUnitsConversion' => $en['DigitalUnitsConversion'],
+            'TimeConversion' => [
+                'ms' => [
+                    'short' => ['ms', 'ms'],
+                    'long' => ['Milisegundo', 'Milisegundos'],
+                ],
+                's' => [
+                    'short' => ['s', 's'],
+                    'long' => ['Segundo', 'Segundos'],
+                ],
+                'min' => [
+                    'short' => ['min', 'min'],
+                    'long' => ['Minuto', 'Minutos'],
+                ],
+                'h' => [
+                    'short' => ['h', 'h'],
+                    'long' => ['Hora', 'Horas'],
+                ],
+                'd' => [
+                    'short' => ['D', 'D'],
+                    'long' => ['Día', 'Días'],
+                ],
+                'w' => [
+                    'short' => ['S', 'S'],
+                    'long' => ['Semana', 'Semanas'],
+                ],
+                'm' => [
+                    'short' => ['M', 'M'],
+                    'long' => ['Mes', 'Meses'],
+                ],
+                'y' => [
+                    'short' => ['A', 'A'],
+                    'long' => ['Año', 'Años'],
+                ],
+                'decade' => [
+                    'short' => ['dec', 'décadas'],
+                    'long' => ['Década', 'Décadas'],
+                ],
+                'century' => [
+                    'short' => ['SL', 'SLS'],
+                    'long' => ['Siglo', 'Siglos'],
+                ],
+            ],
         ];
 
         return match ($locale) {
@@ -124,7 +208,7 @@ class Dictionary
      *
      * @return array
      */
-    public function getKey(string $key, string $symbolMode, bool $plural = false, string $default): string
+    public function getKey(string $key, string $symbolMode, bool $plural = false, string $default = ''): string
     {
         return $this->symbolInstance[$key][$symbolMode][$plural ? 1 : 0] ?? $default;
     }
