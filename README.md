@@ -44,12 +44,18 @@ The basic use of this library is to represent the units passed by parameter and 
 ```php
 use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
 use CarmineMM\UnitsConversion\Conversion\TimeConversion;
+use CarmineMM\UnitsConversion\Conversion\WeightUnitsConversion;
+use CarmineMM\UnitsConversion\Conversion\TemperatureUnitsConversion;
 
 $digitalUnits = DigitalUnitsConversion::make(12345); // 12.345 bits
 $timeUnits = TimeConversion::make(12345); // 12.345 Seconds
+$weightUnits = WeightUnitsConversion::make(12345); // 12.345 Milligram
+$TemperatureUnits = TemperatureUnitsConversion::make(12345); // 12.345 Celsius
 
 $digitalUnits->to('KB'); // Convert to KB: 1.506
 $timeUnits->to('minutes'); // Convert to minutes: 0.2057
+$weightUnits->to('hectograms'); // Convert to Hectograms: 0.12345
+$TemperatureUnits->toFahrenheit(); // Convert to Fahrenheit: 22253
 ```
 
 ### Show in readable user
@@ -61,8 +67,8 @@ In addition, the bookstore can try to discover the unit of measure dynamically, 
 use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
 use CarmineMM\UnitsConversion\Conversion\TimeConversion;
 
-$digitalUnits = new DigitalUnitsConversion(12345, 'kb'); // 12.345 kilobytes
-$timeUnits = new TimeConversion('12345 seconds'); // 12.345 Milliseconds
+$digitalUnits = new DigitalUnitsConversion(12345, 'kb'); // 12.345 Kilobytes
+$timeUnits = new TimeConversion('12345 seconds'); // 12.345 Seconds
 
 $digitalUnits->display('bytes') // 12641280 bytes
 $timeUnits->show(); // 3.43 hours

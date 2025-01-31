@@ -6,6 +6,8 @@ use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
 use CarmineMM\UnitsConversion\Conversion\TemperatureUnitsConversion;
 use CarmineMM\UnitsConversion\Conversion\WeightUnitsConversion;
 
+$TemperatureUnits = TemperatureUnitsConversion::make(12345);
+
 var_dump(
-    WeightUnitsConversion::convert(123, 'kg', 'onzas')
+    $TemperatureUnits->toFahrenheit()
 );
