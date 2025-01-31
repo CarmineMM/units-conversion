@@ -2,6 +2,7 @@
 
 namespace CarmineMM\UnitsConversion\Base;
 
+use Ausi\SlugGenerator\SlugGenerator;
 use Exception;
 
 /**
@@ -179,6 +180,12 @@ class Dictionary
                     'short' => ['°R', '°R'],
                     'long' => ['Rankine', 'Rankine'],
                 ]
+            ],
+            'LengthUnitsConversion' => [
+                'μm' => [
+                    'short' => ['μm', 'μm'],
+                    'long' => ['Micrometer', 'Micrometers'],
+                ],
             ],
         ];
 
@@ -409,5 +416,16 @@ class Dictionary
 
         // Extrae el primer idioma, que es el preferido
         $this->locale = strtolower(substr($languages[0], 0, 2));
+    }
+
+    /**
+     * Parse to slug.
+     *
+     * @param string $string
+     * @return string
+     */
+    public static function slug(string $string): string
+    {
+        return (new SlugGenerator)->generate($string);
     }
 }

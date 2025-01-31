@@ -81,19 +81,19 @@ class WeightUnitsConversion extends BaseConversion
             'name'   => 'Short Ton',
             'value'  => 907_184_740, // mg: 907,184,740
             'symbol' => 'short_ton',
-            'known'  => ['short ton', 'short tons', 'us ton', 'us tons', 'tonelada corta', 'toneladas cortas'],
+            'known'  => ['short-ton', 'short-tons', 'us-ton', 'us-tons', 'tonelada-corta', 'toneladas-cortas'],
         ],
         'ton' => [
             'name'   => 'Metric Ton',
             'value'  => 1_000_000_000, // mg: 1,000,000,000
             'symbol' => 'ton',
-            'known'  => ['t', 'ton', 'tons', 'tonne', 'tonnes', 'tonelada', 'toneladas', 'metric ton', 'metric tons', 'tonelada métrica', 'toneladas métricas'],
+            'known'  => ['t', 'ton', 'tons', 'tonne', 'tonnes', 'tonelada', 'toneladas', 'metric-ton', 'metric-tons', 'tonelada-metrica', 'toneladas-metricas'],
         ],
         'long_ton' => [
             'name'   => 'Long Ton',
             'value'  => 1_016_046_908.8, // mg: 1,016,046,908.8
             'symbol' => 'long_ton',
-            'known'  => ['long ton', 'long tons', 'uk ton', 'uk tons', 'tonelada larga', 'toneladas largas', 'tonelada inglesa'],
+            'known'  => ['long-ton', 'long-tons', 'uk-ton', 'uk-tons', 'tonelada-larga', 'toneladas-largas', 'tonelada-inglesa'],
         ],
     ];
 }
