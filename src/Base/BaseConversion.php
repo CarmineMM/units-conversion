@@ -7,7 +7,7 @@ namespace CarmineMM\UnitsConversion\Base;
  *
  * @author Carmine Maggio <carminemaggiom@gmail.com>
  * @package UnitsConversion
- * @version 1.2.0
+ * @version 1.3.0
  */
 class BaseConversion
 {
@@ -42,7 +42,7 @@ class BaseConversion
      *
      * @var string
      */
-    private string $firstKey = '';
+    protected string $firstKey = '';
 
     /**
      * Mode to show you symbols,
@@ -68,7 +68,11 @@ class BaseConversion
 
         [$number, $unit] = $this->discoverUnit($number, $unit);
 
-        $this->currentValue = $this->originalValue = static::convert($number, $unit, $this->firstKey);
+        $this->currentValue = $this->originalValue = $this->firstKey !== $unit
+            // If the unit is not the lowest denomination
+            ? ($this->lists[$unit]['value'] * $number)
+            // Leave unit like this
+            : $number;
     }
 
     /**
@@ -76,7 +80,7 @@ class BaseConversion
      *
      * @return void
      */
-    private function discoverDictionary(): void
+    protected function discoverDictionary(): void
     {
         $dictionary = Dictionary::getInstance();
 
@@ -184,16 +188,18 @@ class BaseConversion
     public function to(string $unit): float
     {
         $value = 0;
+        $unit = strtolower($unit);
 
-        foreach ($this->lists as $key => $theUnit) {
-            if ($unit === $key) {
-                $value = $theUnit['value'];
-                break;
-            }
+        if (isset($this->lists[$unit])) {
+            $value = $this->lists[$unit]['value'];
+        }
 
-            if (in_array($unit, $theUnit['known'])) {
-                $value = $theUnit['value'];
-                break;
+        if ($value === 0) {
+            foreach ($this->lists as $theUnit) {
+                if (in_array($unit, $theUnit['known'])) {
+                    $value = $theUnit['value'];
+                    break;
+                }
             }
         }
 
@@ -226,12 +232,7 @@ class BaseConversion
      */
     public static function convert(int|float $number, string $unit, string $unitTo): float
     {
-        $self = new static;
-
-        $unit = $self->getAvailableUnits()[$unit];
-        $unitTo = $self->getAvailableUnits()[$unitTo];
-
-        return ($number * $unit['value']) / $unitTo['value'];
+        return (new static($number, $unit))->to($unitTo);
     }
 
     /**

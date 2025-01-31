@@ -35,7 +35,7 @@ class TemperatureUnitsConversion extends BaseConversion
         'kelvin' => [
             'name' => 'Kelvin',
             'value' => 1, // Relative value for calculations
-            'symbol' => 'K',
+            'symbol' => '°K',
             'known' => ['k', 'kelvin', '°k'],
         ],
         'rankine' => [
@@ -45,4 +45,140 @@ class TemperatureUnitsConversion extends BaseConversion
             'known' => ['r', 'rankine', '°r'],
         ],
     ];
+
+    /**
+     * Construct
+     *
+     * @param string|integer $number
+     * @param string $unit
+     */
+    public function __construct(string|int|float $number = 0, string $unit = '')
+    {
+        $this->discoverDictionary();
+
+        $this->firstKey = array_keys($this->lists)[0];
+
+        [$number, $unit] = $this->discoverUnit($number, $unit);
+
+        $this->currentValue = $number;
+
+        $this->currentValue = $this->originalValue = $this->convertToCelsius($unit);
+    }
+
+    /**
+     * Convert
+     *
+     * @param integer|float $number
+     * @param string $unit
+     * @param string $unitTo
+     * @return float
+     */
+    public static function convert(int|float $number, string $unit, string $unitTo): float
+    {
+        return (new static($number, $unit))->to($unitTo);
+    }
+
+    /**
+     * Convert to Celsius units,
+     * This method does not have a discover of units.
+     *
+     * @return float
+     */
+    public function convertToCelsius(string $from = 'celsius'): float
+    {
+        return match ($from ?? $this->firstKey) {
+            'fahrenheit' => ($this->currentValue - 32) * 5 / 9,
+            'kelvin' => $this->currentValue - 273.15,
+            'rankine' => ($this->currentValue - 491.67) * 5 / 9,
+            default => $this->currentValue,
+        };
+    }
+
+    /**
+     * Convert to Fahrenheit
+     *
+     * @param string $from
+     * @return float
+     */
+    public function convertToFahrenheit(string $from = 'celsius'): float
+    {
+        return match ($from ?? $this->firstKey) {
+            'celsius' => $this->currentValue * 9 / 5 + 32,
+            'kelvin' => ($this->currentValue - 273.15) * 9 / 5 + 32,
+            'rankine' => ($this->currentValue - 491.67) * 9 / 5 + 32,
+            default => $this->currentValue,
+        };
+    }
+
+    /**
+     * Convert to Kelvin
+     *
+     * @param string $from
+     * @return float
+     */
+    public function convertToKelvin(string $from = 'celsius'): float
+    {
+        return match ($from ?? $this->firstKey) {
+            'celsius' => $this->currentValue + 273.15,
+            'fahrenheit' => ($this->currentValue - 32) * 5 / 9 + 273.15,
+            'rankine' => ($this->currentValue - 491.67) * 5 / 9 + 273.15,
+            default => $this->currentValue,
+        };
+    }
+
+    /**
+     * Convert to Rankine
+     *
+     * @param string $from
+     * @return float
+     */
+    public function convertToRankine(string $from = 'celsius'): float
+    {
+        return match ($from ?? $this->firstKey) {
+            'celsius' => $this->currentValue * 9 / 5 + 491.67,
+            'fahrenheit' => $this->currentValue + 491.67,
+            'kelvin' => $this->currentValue * 9 / 5 + 491.67,
+            default => $this->currentValue,
+        };
+    }
+
+    /**
+     * To convert in Temperature Units Conversion
+     *
+     * @param string $unit Auto Discover units
+     * @return float
+     */
+    public function to(string $unit): float
+    {
+        $unit = strtolower($unit);
+        $unitKey = '';
+
+        if (isset($this->lists[$unit])) {
+            $unitKey = $unit;
+        }
+
+        if ($unitKey === '') {
+            foreach ($this->lists as $key => $theUnit) {
+                if (in_array($unit, $theUnit['known'])) {
+                    $unitKey = $key;
+                    break;
+                }
+            }
+        }
+
+        if ($unitKey === '') {
+            // If you see this error, it means that you have entered a unit
+            // That is not defined in the list, which can be
+            // A writing error or a foul in the bookstore.
+            throw new \Exception('Unit not found', 500);
+        }
+
+        return match ($unitKey) {
+            'celsius' => $this->convertToCelsius(),
+            'fahrenheit' => $this->convertToFahrenheit(),
+            'kelvin' => $this->convertToKelvin(),
+            'rankine' => $this->convertToRankine(),
+            default => $this->currentValue,
+        };
+    }
 }

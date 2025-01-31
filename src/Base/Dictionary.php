@@ -2,6 +2,8 @@
 
 namespace CarmineMM\UnitsConversion\Base;
 
+use Exception;
+
 /**
  * Word dictionary to translate and use in display methods
  * 
@@ -160,6 +162,24 @@ class Dictionary
                     'long' => ['Long Ton', 'Long Tons'],
                 ],
             ],
+            'TemperatureUnitsConversion' => [
+                '°C' => [
+                    'short' => ['°C', '°C'],
+                    'long' => ['Celsius', 'Celsius'],
+                ],
+                '°F' => [
+                    'short' => ['°F', '°F'],
+                    'long' => ['Fahrenheit', 'Fahrenheit'],
+                ],
+                '°K' => [
+                    'short' => ['°K', '°K'],
+                    'long' => ['Kelvin', 'Kelvin'],
+                ],
+                '°R' => [
+                    'short' => ['°R', '°R'],
+                    'long' => ['Rankine', 'Rankine'],
+                ]
+            ],
         ];
 
         $es = [
@@ -260,6 +280,24 @@ class Dictionary
                     'long' => ['Tonelada Larga', 'Toneladas Largas'],
                 ],
             ],
+            'TemperatureUnitsConversion' => [
+                '°C' => [
+                    'short' => ['°C', '°C'],
+                    'long' => ['Grado Celsius', 'Grados Celsius'],
+                ],
+                '°F' => [
+                    'short' => ['°F', '°F'],
+                    'long' => ['Grado Fahrenheit', 'Grados Fahrenheit'],
+                ],
+                '°K' => [
+                    'short' => ['°K', '°K'],
+                    'long' => ['Grado Kelvin', 'Grados Kelvin'],
+                ],
+                '°R' => [
+                    'short' => ['°R', '°R'],
+                    'long' => ['Grado Rankine', 'Grados Rankine'],
+                ],
+            ],
         ];
 
         return match ($locale) {
@@ -315,7 +353,11 @@ class Dictionary
     {
         $this->symbolKey = $symbolKey;
 
-        $this->symbolInstance = $this->symbols($this->locale)[$this->symbolKey];
+        $this->symbolInstance = $this->symbols($this->locale)[$this->symbolKey] ??
+            // If you are seeing an error here, it means that the unit of measure
+            // is not found in the dictionary, to make a display in the current language
+            // Try to configure the language of the library in 'In' not to fail.
+            throw new Exception("Symbol key not found", 500);
     }
 
     /**
