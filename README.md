@@ -15,6 +15,26 @@ Use conversion of digital units such as GB or MB, or time conversions like years
 composer require carminemm/units-conversion
 ```
 
+## Classes available in the bookstore
+
+There are multiple classes that you can use to make multiple conversions, the available ones are shown.
+
+```php
+// Conversion of digital units, MB, KB, GB, TB, etc ...
+CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion::class;
+
+// Time conversions days, months, weeks, etc ...
+CarmineMM\UnitsConversion\Conversion\TimeConversion::class;
+
+// Weight conversions, ounces, pounds, kilograms, tons, etc ...
+CarmineMM\UnitsConversion\Conversion\WeightUnitsConversion::class;
+
+// Conversion de temperature, Celsius, Fahrenheit, Kelvin, Rankine
+CarmineMM\UnitsConversion\Conversion\TemperatureUnitsConversion::class;
+```
+
+All these classes inherit the same configurations and methods shown below:
+
 ## Use
 
 ### Units conversion
@@ -26,7 +46,7 @@ use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
 use CarmineMM\UnitsConversion\Conversion\TimeConversion;
 
 $digitalUnits = DigitalUnitsConversion::make(12345); // 12.345 bits
-$timeUnits = TimeConversion::make(12345); // 12.345 Milliseconds
+$timeUnits = TimeConversion::make(12345); // 12.345 Seconds
 
 $digitalUnits->to('KB'); // Convert to KB: 1.506
 $timeUnits->to('minutes'); // Convert to minutes: 0.2057
@@ -41,8 +61,8 @@ In addition, the bookstore can try to discover the unit of measure dynamically, 
 use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
 use CarmineMM\UnitsConversion\Conversion\TimeConversion;
 
-$digitalUnits = DigitalUnitsConversion::make(12345, 'kb'); // 12.345 kilobytes
-$timeUnits = TimeConversion::make('12345 seconds'); // 12.345 Milliseconds
+$digitalUnits = new DigitalUnitsConversion(12345, 'kb'); // 12.345 kilobytes
+$timeUnits = new TimeConversion('12345 seconds'); // 12.345 Milliseconds
 
 $digitalUnits->display('bytes') // 12641280 bytes
 $timeUnits->show(); // 3.43 hours
@@ -64,8 +84,10 @@ The bookstore tries to discover since what unit you want to convert or the desti
 
 ```php
 // Fast conversion without instance
-DigitalUnitsConversion::convert(number: 12323, unit: 'KB', unitTo: 'bytes');
+//It only admits exact units to conversion, listed in 'getAvailableUnits()'
+DigitalUnitsConversion::convert(number: 12323, unit: 'KB', unitTo: 'byte');
 
+// The 'to' method can discover unity although it can be written in different ways
 $units->to('GB'); // Turn Gigabyte
 $units->to('gb'); // Turn Gigabyte
 $units->to('gigabyte'); // Turn Gigabyte
