@@ -46,7 +46,7 @@ class TimeConversion extends BaseConversion
         'd' => [
             'value' => 86_400_000,
             'name' => 'day',
-            'known'  => ['day', 'days', 'dia', 'días'],
+            'known'  => ['day', 'days', 'dia', 'dias'],
             'symbol' => 'd',
         ],
         'w' => [
@@ -64,13 +64,13 @@ class TimeConversion extends BaseConversion
         'y' => [
             'value' => 31_557_600_000,
             'name' => 'year',
-            'known'  => ['year', 'years', 'año', 'años'],
+            'known'  => ['year', 'years', 'ano', 'anos'],
             'symbol' => 'y',
         ],
         'decade' => [
             'value' => 31_557_600_000,
             'name' => 'decade',
-            'known'  => ['decade', 'decades', 'década', 'décadas'],
+            'known'  => ['decade', 'decades', 'decada', 'decadas'],
             'symbol' => 'decade',
         ],
         'century' => [

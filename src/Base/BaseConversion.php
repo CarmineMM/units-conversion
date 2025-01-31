@@ -164,7 +164,7 @@ class BaseConversion
      */
     protected function getKeyUnit(string $unit): string
     {
-        $unit = strtolower($unit);
+        $unit = Dictionary::slug($unit);
 
         if (isset($this->lists[$unit])) {
             return $unit;
@@ -188,7 +188,7 @@ class BaseConversion
     public function to(string $unit): float
     {
         $value = 0;
-        $unit = strtolower($unit);
+        $unit = Dictionary::slug($unit);
 
         if (isset($this->lists[$unit])) {
             $value = $this->lists[$unit]['value'];

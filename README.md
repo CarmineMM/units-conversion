@@ -31,6 +31,9 @@ CarmineMM\UnitsConversion\Conversion\WeightUnitsConversion::class;
 
 // Conversion de temperature, Celsius, Fahrenheit, Kelvin, Rankine
 CarmineMM\UnitsConversion\Conversion\TemperatureUnitsConversion::class;
+
+// Conversion of kilometers, miles, feet, inches, centimeters, etc ...
+CarmineMM\UnitsConversion\Conversion\LengthUnitsConversion::class;
 ```
 
 All these classes inherit the same configurations and methods shown below:
