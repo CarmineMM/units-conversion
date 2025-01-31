@@ -4,6 +4,13 @@ namespace CarmineMM\UnitsConversion\Conversion;
 
 use CarmineMM\UnitsConversion\Base\BaseConversion;
 
+/**
+ * Length units conversion
+ * 
+ * @author Carmine Maggio <carminemaggiom@gmail.com>
+ * @package UnitsConversion
+ * @version 1.0.0
+ */
 class LengthUnitsConversion extends BaseConversion
 {
     /**
