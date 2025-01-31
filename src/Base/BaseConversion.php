@@ -7,7 +7,7 @@ namespace CarmineMM\UnitsConversion\Base;
  *
  * @author Carmine Maggio <carminemaggiom@gmail.com>
  * @package UnitsConversion
- * @version 1.1.0
+ * @version 1.2.0
  */
 class BaseConversion
 {

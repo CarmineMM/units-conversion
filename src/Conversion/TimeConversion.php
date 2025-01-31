@@ -9,7 +9,7 @@ use CarmineMM\UnitsConversion\Base\BaseConversion;
  *
  * @author Carmine Maggio <carminemaggiom@gmail.com>
  * @package UnitsConversion
- * @version 1.0.0
+ * @version 1.1.0
  */
 class TimeConversion extends BaseConversion
 {

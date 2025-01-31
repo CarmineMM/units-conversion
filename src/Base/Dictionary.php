@@ -2,6 +2,13 @@
 
 namespace CarmineMM\UnitsConversion\Base;
 
+/**
+ * Word dictionary to translate and use in display methods
+ * 
+ * @author Carmine Maggio <carminemaggiom@gmail.com>
+ * @package UnitsConversion
+ * @version 1.0.0
+ */
 class Dictionary
 {
     /**

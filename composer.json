@@ -1,6 +1,6 @@
 {
     "name": "carminemm/units-conversion",
-    "description": "Convert digital units and large numbers at a glance",
+    "description": "Convert digital units, temperature, weight and large numbers at a glance",
     "version": "1.1.0",
     "type": "library",
     "license": "MIT",

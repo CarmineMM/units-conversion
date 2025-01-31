@@ -16,24 +16,33 @@ class TemperatureUnitsConversion extends BaseConversion
     /**
      * Known units
      */
+    /**
+     * Known units
+     */
     protected array $lists = [
-        'C' => [
-            'name'   => 'Celsius',
+        'celsius' => [
+            'name' => 'Celsius',
+            'value' => 1, // Base unit, relative value for calculations
             'symbol' => '°C',
-            'known'  => ['c', 'celsius', 'celsiuses', '°C'],
-            'value' => 1,
+            'known' => ['c', 'celsius', 'centigrade', '°c'],
         ],
-        'F' => [
-            'name'   => 'Fahrenheit',
-            'value'  => 1,
+        'fahrenheit' => [
+            'name' => 'Fahrenheit',
+            'value' => 1, // Relative value for calculations
             'symbol' => '°F',
-            'known'  => ['f', 'fahrenheit', 'fahrenheits'],
+            'known' => ['f', 'fahrenheit', '°f'],
         ],
-        'K' => [
-            'name'   => 'Kelvin',
-            'value'  => 1,
+        'kelvin' => [
+            'name' => 'Kelvin',
+            'value' => 1, // Relative value for calculations
             'symbol' => 'K',
-            'known'  => ['k', 'kelvin', 'kelvins'],
+            'known' => ['k', 'kelvin', '°k'],
+        ],
+        'rankine' => [
+            'name' => 'Rankine',
+            'value' => 1, // Relative value for calculations
+            'symbol' => '°R',
+            'known' => ['r', 'rankine', '°r'],
         ],
     ];
 }
