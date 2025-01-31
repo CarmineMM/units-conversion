@@ -1,6 +1,6 @@
 # Conversion of units
 
-Use conversion of digital units such as GB or MB, or time conversions like years or months to weeks.
+Use conversion of digital units such as GB or MB, Celsius, Fahrenheit, Kilograms, Ounces, or time conversions like years or months to weeks.
 
 ## Requirements
 
@@ -101,7 +101,7 @@ Like the previous one, the bookstore tries to discover where to convert and to c
 The difference is that this show the name of the conversion.
 
 ```php
-$digitalUnits->display('kb');
+$temperatureUnits->display('°C');
 $digitalUnits->display('KB');
 $digitalUnits->display('kilobyte');
 $digitalUnits->display('Kilobytes');
