@@ -62,7 +62,7 @@ class TemperatureUnitsConversion extends BaseConversion
 
         $this->currentValue = $number;
 
-        $this->currentValue = $this->originalValue = $this->convertToCelsius($unit);
+        $this->currentValue = $this->originalValue = $this->toCelsius($unit);
     }
 
     /**
@@ -84,7 +84,7 @@ class TemperatureUnitsConversion extends BaseConversion
      *
      * @return float
      */
-    public function convertToCelsius(string $from = 'celsius'): float
+    public function toCelsius(string $from = 'celsius'): float
     {
         return match ($from ?? $this->firstKey) {
             'fahrenheit' => ($this->currentValue - 32) * 5 / 9,
@@ -100,7 +100,7 @@ class TemperatureUnitsConversion extends BaseConversion
      * @param string $from
      * @return float
      */
-    public function convertToFahrenheit(string $from = 'celsius'): float
+    public function toFahrenheit(string $from = 'celsius'): float
     {
         return match ($from ?? $this->firstKey) {
             'celsius' => $this->currentValue * 9 / 5 + 32,
@@ -116,7 +116,7 @@ class TemperatureUnitsConversion extends BaseConversion
      * @param string $from
      * @return float
      */
-    public function convertToKelvin(string $from = 'celsius'): float
+    public function toKelvin(string $from = 'celsius'): float
     {
         return match ($from ?? $this->firstKey) {
             'celsius' => $this->currentValue + 273.15,
@@ -132,7 +132,7 @@ class TemperatureUnitsConversion extends BaseConversion
      * @param string $from
      * @return float
      */
-    public function convertToRankine(string $from = 'celsius'): float
+    public function toRankine(string $from = 'celsius'): float
     {
         return match ($from ?? $this->firstKey) {
             'celsius' => $this->currentValue * 9 / 5 + 491.67,
@@ -174,10 +174,10 @@ class TemperatureUnitsConversion extends BaseConversion
         }
 
         return match ($unitKey) {
-            'celsius' => $this->convertToCelsius(),
-            'fahrenheit' => $this->convertToFahrenheit(),
-            'kelvin' => $this->convertToKelvin(),
-            'rankine' => $this->convertToRankine(),
+            'celsius' => $this->toCelsius(),
+            'fahrenheit' => $this->toFahrenheit(),
+            'kelvin' => $this->toKelvin(),
+            'rankine' => $this->toRankine(),
             default => $this->currentValue,
         };
     }
