@@ -80,4 +80,214 @@ class TimeConversion extends BaseConversion
             'symbol' => 'century',
         ],
     ];
+
+    /**
+     * Create an instance from a time in milliseconds
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromMilliseconds(float $value): static
+    {
+        return new static($value);
+    }
+
+    /**
+     * Create an instance from a time in seconds
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromSeconds(float $value): static
+    {
+        return new static($value, 's');
+    }
+
+    /**
+     * Create an instance from a time in minutes
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromMinutes(float $value): static
+    {
+        return new static($value, 'min');
+    }
+
+    /**
+     * Create an instance from a time in hours
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromHours(float $value): static
+    {
+        return new static($value, 'h');
+    }
+
+    /**
+     * Create an instance from a time in days
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromDays(float $value): static
+    {
+        return new static($value, 'd');
+    }
+
+    /**
+     * Create an instance from a time in weeks
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromWeeks(float $value): static
+    {
+        return new static($value, 'w');
+    }
+
+    /**
+     * Create an instance from a time in months
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromMonths(float $value): static
+    {
+        return new static($value, 'm');
+    }
+
+    /**
+     * Create an instance from a time in years
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromYears(float $value): static
+    {
+        return new static($value, 'y');
+    }
+
+    /**
+     * Create an instance from a time in decades
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromDecades(float $value): static
+    {
+        return new static($value, 'decade');
+    }
+
+    /**
+     * Create an instance from a time in centuries
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromCenturies(float $value): static
+    {
+        return new static($value, 'century');
+    }
+
+    /**
+     * Convert to milliseconds
+     *
+     * @return float
+     */
+    public function toMilliseconds(): float
+    {
+        return $this->to('ms');
+    }
+
+    /**
+     * Convert to seconds
+     *
+     * @return float
+     */
+    public function toSeconds(): float
+    {
+        return $this->to('s');
+    }
+
+    /**
+     * Convert to minutes
+     *
+     * @return float
+     */
+    public function toMinutes(): float
+    {
+        return $this->to('min');
+    }
+
+    /**
+     * Convert to hours
+     *
+     * @return float
+     */
+    public function toHours(): float
+    {
+        return $this->to('h');
+    }
+
+    /**
+     * Convert to days
+     *
+     * @return float
+     */
+    public function toDays(): float
+    {
+        return $this->to('d');
+    }
+
+    /**
+     * Convert to weeks
+     *
+     * @return float
+     */
+    public function toWeeks(): float
+    {
+        return $this->to('w');
+    }
+
+    /**
+     * Convert to months
+     *
+     * @return float
+     */
+    public function toMonths(): float
+    {
+        return $this->to('M');
+    }
+
+    /**
+     * Convert to years
+     *
+     * @return float
+     */
+    public function toYears(): float
+    {
+        return $this->to('y');
+    }
+
+    /**
+     * Convert to decades
+     *
+     * @return float
+     */
+    public function toDecades(): float
+    {
+        return $this->to('decades');
+    }
+
+    /**
+     * Convert to centuries
+     *
+     * @return float
+     */
+    public function toCenturies(): float
+    {
+        return $this->to('centuries');
+    }
 }
