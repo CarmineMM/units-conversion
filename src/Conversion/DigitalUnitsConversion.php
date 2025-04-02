@@ -60,4 +60,151 @@ class DigitalUnitsConversion extends BaseConversion
             'known'  => ['pb', 'petabyte', 'petabytes'],
         ],
     ];
+
+    /**
+     * Conversion from bits
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromBits(float $value): static
+    {
+        return new static($value, 'bit');
+    }
+
+    /**
+     * Conversion from bytes
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromBytes(float $value): static
+    {
+        return new static($value, 'byte');
+    }
+
+    /**
+     * Conversion from kilobytes
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromKilobytes(float $value): static
+    {
+        return new static($value, 'KB');
+    }
+
+    /**
+     * Conversion from megabytes
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromMegabytes(float $value): static
+    {
+        return new static($value, 'MB');
+    }
+
+    /**
+     * Conversion from gigabytes
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromGigabytes(float $value): static
+    {
+        return new static($value, 'GB');
+    }
+
+    /**
+     * Conversion from terabytes
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromTerabytes(float $value): static
+    {
+        return new static($value, 'TB');
+    }
+
+    /**
+     * Conversion from petabytes
+     *
+     * @param float $value
+     * @return static
+     */
+    public static function fromPetabytes(float $value): static
+    {
+        return new static($value, 'PB');
+    }
+
+    /**
+     * Convert to bits
+     *
+     * @return float
+     */
+    public function toBits(): float
+    {
+        return $this->to('bit');
+    }
+
+    /**
+     * Convert to bytes
+     *
+     * @return float
+     */
+    public function toBytes(): float
+    {
+        return $this->to('byte');
+    }
+
+    /**
+     * Convert to kilobytes
+     *
+     * @return float
+     */
+    public function toKilobytes(): float
+    {
+        return $this->to('KB');
+    }
+
+    /**
+     * Convert to megabytes
+     *
+     * @return float
+     */
+    public function toMegabytes(): float
+    {
+        return $this->to('MB');
+    }
+
+    /**
+     * Convert to gigabytes
+     *
+     * @return float
+     */
+    public function toGigabytes(): float
+    {
+        return $this->to('GB');
+    }
+
+    /**
+     * Convert to terabytes
+     *
+     * @return float
+     */
+    public function toTerabytes(): float
+    {
+        return $this->to('TB');
+    }
+
+    /**
+     * Convert to petabytes
+     *
+     * @return float
+     */
+    public function toPetabytes(): float
+    {
+        return $this->to('PB');
+    }
 }

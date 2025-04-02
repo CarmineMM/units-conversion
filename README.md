@@ -124,7 +124,47 @@ $digitalUnits->smartConversion(); // Discover the closest unit for conversion an
 You can perform mathematical operations using the bookstore, and add, subtract or compare different conversion units, for example, add 300 megabytes to 2 gigabytes.
 Or compare whether 2300 seconds is greater than 130 minutes.
 
-#### Sumar y restar unidades
+### Factory methods for digital units conversion
+
+The `DigitalUnitsConversion` class provides static factory methods to create instances from specific digital units:
+
+```php
+use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
+
+// Create instances from different digital units
+$units = DigitalUnitsConversion::fromBits(1024); // 1024 bits
+$units = DigitalUnitsConversion::fromBytes(1024); // 1024 bytes
+$units = DigitalUnitsConversion::fromKilobytes(1); // 1 KB
+$units = DigitalUnitsConversion::fromMegabytes(1); // 1 MB
+$units = DigitalUnitsConversion::fromGigabytes(1); // 1 GB
+$units = DigitalUnitsConversion::fromTerabytes(1); // 1 TB
+$units = DigitalUnitsConversion::fromPetabytes(1); // 1 PB
+```
+
+These methods provide a more explicit way to create instances from specific digital units, making the code more readable and self-documenting.
+
+### Direct conversion methods
+
+In addition to the generic `to()` method, the `DigitalUnitsConversion` class provides specific methods for direct conversion to each digital unit:
+
+```php
+use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
+
+$units = DigitalUnitsConversion::make(1024, 'KB'); // 1024 KB
+
+// Direct conversion methods
+$bits = $units->toBits(); // Convert to bits
+$bytes = $units->toBytes(); // Convert to bytes
+$kb = $units->toKilobytes(); // Convert to kilobytes
+$mb = $units->toMegabytes(); // Convert to megabytes
+$gb = $units->toGigabytes(); // Convert to gigabytes
+$tb = $units->toTerabytes(); // Convert to terabytes
+$pb = $units->toPetabytes(); // Convert to petabytes
+```
+
+These methods provide a more explicit way to convert between units, making the code more readable and self-documenting.
+
+#### Adding and subtracting units
 
 ```php
 use CarmineMM\UnitsConversion\Conversion\DigitalUnitsConversion;
