@@ -384,11 +384,15 @@ class Dictionary
      */
     public function setLocale(string $locale): static
     {
-        self::$instance->locale = $locale;
+        $instance = self::getInstance();
 
-        $this->symbolInstance = $this->symbols($this->locale)[$this->symbolKey];
+        $instance->locale = $locale;
 
-        return $this;
+        $instance->symbolInstance = $instance->symbols($instance->locale)[$instance->symbolKey];
+
+        self::$instance = $instance;
+
+        return $instance;
     }
 
     /**

@@ -35,7 +35,7 @@ class TimeConversion extends BaseConversion
             'value' => 60_000,
             'name' => 'minute',
             'known'  => ['minute', 'minutes', 'minuto', 'minutos'],
-            'symbol' => 'm',
+            'symbol' => 'min',
         ],
         'h' => [
             'value' => 3_600_000,
